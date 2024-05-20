@@ -60,6 +60,12 @@ typedef struct r2{
     }
   }
 
+  void reset(){
+    vectors.clear();
+    populate_grid();
+
+  }
+
   void linear_transformation(vector2 i, vector2 j){
     for (vector2& vector : vectors){
       vector.x = (vector.x*i.x) + (vector.y*j.x);
@@ -132,6 +138,10 @@ int main()
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
+          space.reset();
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
